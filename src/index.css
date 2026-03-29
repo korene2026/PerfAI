@@ -1,21 +1,105 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+/* PerfAI 2026 Global Styles */
+:root {
+  --bg: #ffffff;
+  --text: #1f1f1f;
+  --glass: rgba(0, 0, 0, 0.05);
+  --border: rgba(0, 0, 0, 0.1);
+  --accent: #4285f4;
+}
 
-* {
-  padding: 0;
+/* Koyu Tema Ayarları */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e0e10;
+    --text: #e8eaed;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+body {
   margin: 0;
-  box-sizing: border-box;
-  font-family: "Outfit", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  transition: background 0.3s ease;
 }
-#root {
-  min-height: 100vh;
+
+/* Arka plandaki hareketli fütüristik daireler */
+.bg-circles {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  filter: blur(100px);
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.12;
+  animation: float 25s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(15vw, 15vh) scale(1.2); }
+}
+
+/* Sol Panel (Sidebar) */
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background: var(--glass);
+  backdrop-filter: blur(30px);
+  border-right: 1px solid var(--border);
+  padding: 20px;
   display: flex;
-  animation: fadeIn 1.5s;
+  flex-direction: column;
 }
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+
+/* Giriş Çubuğu (Glassmorphism) */
+.search-container {
+  width: 100%;
+  max-width: 800px;
+  background: var(--glass);
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.search-container input {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  flex: 1;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* Buton Stilleri */
+.btn-modern {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-modern:hover {
+  background: rgba(66, 133, 244, 0.1);
+  border-color: var(--accent);
 }
